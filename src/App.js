@@ -3,8 +3,16 @@ import './App.css';
 
 function App() {
 
-  let [글제목, b] = useState(['남자코트 추천', '강남 우동맛집', '파이썬독학']);
+  let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동맛집', '파이썬독학']);
   let [따봉, 따봉변경] = useState(0);
+
+  /**
+   * state 변경함수 특징
+   * 기존 state == 신규 state의 경우
+   * 변경 안해줌.
+   * 
+   * array/object -> 레퍼런스 변수라는 점을 생각해야함
+   */
 
   return (
     <div className="App">
@@ -26,7 +34,9 @@ function App() {
       </div>
 
       <button onClick={()=>{
-        b(['여자코트 추천', '강남 우동맛집', '파이썬독학']);
+        let copy = [...글제목];
+        copy[0] = '여자코트 추천';
+        글제목변경(copy);
         }}>글 수정</button>
     </div>
   );
