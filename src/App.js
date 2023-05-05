@@ -5,7 +5,11 @@ import './App.css';
 function App() {
 
   let post = '강남 우동 맛집';
-  let [글제목1, 글제목2, 글제목3] = [useState('남자코트 추천'),useState('강남 우동맛집'),useState('파이썬독학')];
+  
+  let [글제목1, a] = useState('남자코트 추천');
+  let [글제목2, b] = useState('강남 우동맛집');
+  let [글제목3, c] = useState('파이썬독학');
+
   return (
     <div className="App">
       <div className="black-nav">
