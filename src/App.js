@@ -43,7 +43,7 @@ function App() {
 
       <button onClick={()=>{
         let copy = [...글제목];
-        copy = copy.sort();
+        copy.sort();
         글제목변경(copy);
       }}>가나다라순정렬</button>
     </div>
