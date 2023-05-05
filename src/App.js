@@ -12,6 +12,8 @@ function App() {
    * 변경 안해줌.
    * 
    * array/object -> 레퍼런스 변수라는 점을 생각해야함
+   * let copy = [...원본] ;
+   * [...  ]   사용해서 독립적인 카피본을 만든다.
    */
 
   return (
@@ -37,7 +39,13 @@ function App() {
         let copy = [...글제목];
         copy[0] = '여자코트 추천';
         글제목변경(copy);
-        }}>글 수정</button>
+      }}>글 수정</button>
+
+      <button onClick={()=>{
+        let copy = [...글제목];
+        copy = copy.sort();
+        글제목변경(copy);
+      }}>가나다라순정렬</button>
     </div>
   );
 }
