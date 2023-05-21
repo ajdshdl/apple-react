@@ -4,7 +4,7 @@ import './App.css';
 function App() {
 
   let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동맛집', '파이썬독학']);
-  let [따봉, 따봉변경] = useState(0);
+  let [따봉, 따봉변경] = useState([0, 0, 0]);
 
   let [modal, setModal] = useState(false);
   /**
@@ -21,9 +21,9 @@ function App() {
     <div className="App">
       <div className="black-nav">
         <h4>ReactBlog</h4>
-        
       </div>
-        <div className='list'>
+
+      {/* <div className='list'>
         <h4>{ 글제목[0] } <span onClick={()=> {따봉변경(따봉 + 1)}}> 👍 </span> {따봉} </h4>
         <p>2월 17일 발행</p>
       </div>
@@ -34,7 +34,21 @@ function App() {
       <div className='list'>
         <h4 onClick={()=>{setModal(!modal)}}>{ 글제목[2] }</h4>
         <p>2월 17일 발행</p>
-      </div>
+      </div> */}
+      {
+        글제목.map(function(a, i){ //i 는 반복문이 돌때마다 0부터 1씩 증가하는 정수
+          return (<div className='list' key={i}>
+          {/* <h4>{ a }</h4> */}
+          <h4 onClick={()=>{setModal(!modal)}}>{ 글제목[i] }
+          <span onClick={()=> {
+            let copy = [...따봉];
+            copy[i] = copy[i] + 1;
+            따봉변경(copy);
+            }}> 👍 </span> {따봉[i]} </h4>
+          <p>2월 17일 발행</p>
+        </div>)
+        })
+      }
 
       <button onClick={()=>{
         let copy = [...글제목];
@@ -51,6 +65,7 @@ function App() {
       {
         modal == true ? <Modal></Modal> : null
       }
+      
     </div>
   );
 }
