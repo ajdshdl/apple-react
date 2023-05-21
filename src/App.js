@@ -7,6 +7,7 @@ function App() {
   let [따봉, 따봉변경] = useState([0, 0, 0]);
 
   let [modal, setModal] = useState(false);
+  let [title, setTitle] = useState(0);
   /**
    * state 변경함수 특징
    * 기존 state == 신규 state의 경우
@@ -39,7 +40,10 @@ function App() {
         글제목.map(function(a, i){ //i 는 반복문이 돌때마다 0부터 1씩 증가하는 정수
           return (<div className='list' key={i}>
           {/* <h4>{ a }</h4> */}
-          <h4 onClick={()=>{setModal(!modal)}}>{ 글제목[i] }
+          <h4 onClick={()=>{
+            setModal(true);
+            setTitle(i);
+            }}>{ 글제목[i] }
           <span onClick={()=> {
             let copy = [...따봉];
             copy[i] = copy[i] + 1;
@@ -50,20 +54,8 @@ function App() {
         })
       }
 
-      <button onClick={()=>{
-        let copy = [...글제목];
-        copy[0] = '여자코트 추천';
-        글제목변경(copy);
-      }}>글 수정</button>
-
-      <button onClick={()=>{
-        let copy = [...글제목];
-        copy.sort();
-        글제목변경(copy);
-      }}>가나다라순정렬</button>
-
       {
-        modal == true ? <Modal color ={'skyblue'} 글제목={글제목} 글제목변경={글제목변경}></Modal> : null
+        modal == true ? <Modal title={title} color={'skyblue'} 글제목={글제목} 글제목변경={글제목변경}></Modal> : null
       }
       
     </div>
@@ -74,7 +66,7 @@ function Modal(props){
     //의미없는 div생략
     <>  
     <div className='modal' style={{background:props.color}}>
-      <h4>{props.글제목[0]}</h4>
+      <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
       <button onClick={()=>{
