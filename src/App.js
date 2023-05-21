@@ -46,8 +46,22 @@ function App() {
         copy.sort();
         글제목변경(copy);
       }}>가나다라순정렬</button>
+
+      <Modal></Modal>
     </div>
   );
+}
+function Modal(){
+  return (
+    //의미없는 div생략
+    <>  
+    <div className='modal'>
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+    </>
+  )
 }
 
 export default App;
